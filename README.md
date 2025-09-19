@@ -231,8 +231,8 @@ r 0.648 0 1 cbr 1000 ------- 0 0.0 1.0 4 4
 
 | `rate_` Configurado (ErrorModel) | Pacotes UDP Enviados | Pacotes UDP Recebidos | Pacotes Perdidos | Taxa de Perda (%) |
 | :------------------------------- | :------------------- | :-------------------- | :--------------- | :---------------- |
-| e.g., 1e-2           | 1504              | 1120               | 384          | 25.53%       |
-| e.g., 1e-5          | 1520              | 1119               | 401          | 26.38%       |
+| e.g., 1e-2           | 400              | 291               | 109          | 27.25%       |
+| e.g., 1e-5          | 400              | 385               | 15          | 3.75%       |
 
 **Descrição do Comportamento do TCP:**
 *   A análise de um ambiente com alta perda de pacotes mostra claramente a principal diferente entre o UDP e o TCP. O UDP mostrou o comportamento de enviar e esquecer os pacotes, que foram descartados pelo ErrorModel e sem qualquer tentativa de os recuperar. O resultado é que a aplicação do UDP com uma alta perda de pacotes, ao depender do contexto, pode tornar a informação recebida incoerente e possivelmente inútil. Já o TCP, que também sofre com descartes, utilizou de seus mecanismos de confiabilidade, que pode ser confirmado com o trace mostrando um fluxo constante de ACKs do receptor para o emissor. Esse recurso, que por mais que torne o desempenho menor, garante que os dados sejam transmitidos de forma íntegra e confiável.
